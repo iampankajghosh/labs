@@ -28,7 +28,7 @@ function HomePage() {
         <Title>Orbit Button</Title>
 
         <Link href="https://x.com/im_pankajghosh" target="_blank">
-          <OrbitButton>Chat with Pankaj</OrbitButton>
+          <OrbitButton>Let's Connect on X</OrbitButton>
         </Link>
       </ButtonContainer>
     </section>
