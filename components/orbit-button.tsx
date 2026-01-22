@@ -36,7 +36,7 @@ function Dot({ isActive }: { isActive: boolean }) {
   return (
     <span
       className={`rounded-full size-[3px] ${
-        isActive ? 'bg-white' : 'bg-white/20'
+        isActive ? "bg-white" : "bg-white/20"
       }`}
       aria-hidden="true"
     />
@@ -54,11 +54,9 @@ function DotRow({ pattern }: { pattern: readonly boolean[] }) {
 }
 
 function OrbitingBox({
-  parentWidth,
   animationVariants,
-  transition
+  transition,
 }: {
-  parentWidth: number;
   animationVariants: Variants;
   transition: Transition;
 }) {
@@ -101,6 +99,7 @@ function OrbitButton({
         setWidth(buttonRef.current?.offsetWidth ?? 0);
         setHasError(false);
       } catch (error) {
+        console.error(error);
         setHasError(true);
       }
     };
@@ -113,7 +112,9 @@ function OrbitButton({
       if (buttonRef.current) {
         resizeObserver.observe(buttonRef.current);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
 
     return () => {
       resizeObserver?.disconnect();
@@ -123,38 +124,59 @@ function OrbitButton({
   const boxVariants: Variants = {
     rest: {
       rotate: 0,
-      x: 0
+      x: 0,
     },
     hover: {
       rotate: rotationDegrees,
-      x: hasError ? 0 : Math.max(0, width - ORBIT_BUTTON_CONFIG.BOX_SIZE - ORBIT_BUTTON_CONFIG.BOX_LEFT_OFFSET)
+      x: hasError
+        ? 0
+        : Math.max(
+            0,
+            width -
+              ORBIT_BUTTON_CONFIG.BOX_SIZE -
+              ORBIT_BUTTON_CONFIG.BOX_LEFT_OFFSET,
+          ),
     },
     focus: {
       rotate: rotationDegrees,
-      x: hasError ? 0 : Math.max(0, width - ORBIT_BUTTON_CONFIG.BOX_SIZE - ORBIT_BUTTON_CONFIG.BOX_LEFT_OFFSET)
+      x: hasError
+        ? 0
+        : Math.max(
+            0,
+            width -
+              ORBIT_BUTTON_CONFIG.BOX_SIZE -
+              ORBIT_BUTTON_CONFIG.BOX_LEFT_OFFSET,
+          ),
     },
     tap: {
       rotate: rotationDegrees,
-      x: hasError ? 0 : Math.max(0, width - ORBIT_BUTTON_CONFIG.BOX_SIZE - ORBIT_BUTTON_CONFIG.BOX_LEFT_OFFSET)
+      x: hasError
+        ? 0
+        : Math.max(
+            0,
+            width -
+              ORBIT_BUTTON_CONFIG.BOX_SIZE -
+              ORBIT_BUTTON_CONFIG.BOX_LEFT_OFFSET,
+          ),
     },
   };
 
   const textVariants: Variants = {
     rest: {
       x: 0,
-      marginLeft: ORBIT_BUTTON_CONFIG.TEXT_OFFSET
+      marginLeft: ORBIT_BUTTON_CONFIG.TEXT_OFFSET,
     },
     hover: {
       x: -ORBIT_BUTTON_CONFIG.TEXT_OFFSET,
-      marginLeft: ORBIT_BUTTON_CONFIG.TEXT_OFFSET
+      marginLeft: ORBIT_BUTTON_CONFIG.TEXT_OFFSET,
     },
     focus: {
       x: -ORBIT_BUTTON_CONFIG.TEXT_OFFSET,
-      marginLeft: ORBIT_BUTTON_CONFIG.TEXT_OFFSET
+      marginLeft: ORBIT_BUTTON_CONFIG.TEXT_OFFSET,
     },
     tap: {
       x: -ORBIT_BUTTON_CONFIG.TEXT_OFFSET,
-      marginLeft: ORBIT_BUTTON_CONFIG.TEXT_OFFSET
+      marginLeft: ORBIT_BUTTON_CONFIG.TEXT_OFFSET,
     },
   };
 
@@ -163,7 +185,8 @@ function OrbitButton({
     duration: animationDuration,
   };
 
-  const baseClassName = "relative flex h-12 items-center justify-end cursor-pointer rounded-lg px-4 p-0.5 bg-zinc-900 border-2 border-zinc-700 transition-colors duration-200 ease-in-out hover:bg-zinc-950 focus:bg-zinc-950 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 focus:ring-offset-zinc-800";
+  const baseClassName =
+    "relative flex h-12 items-center justify-end cursor-pointer rounded-lg px-4 p-0.5 bg-zinc-900 border-2 border-zinc-700 transition-colors duration-200 ease-in-out hover:bg-zinc-950 focus:bg-zinc-950 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 focus:ring-offset-zinc-800";
 
   return (
     <motion.button
@@ -177,11 +200,7 @@ function OrbitButton({
       {...props}
     >
       {!disableAnimations && (
-        <OrbitingBox
-          parentWidth={width}
-          animationVariants={boxVariants}
-          transition={transition}
-        />
+        <OrbitingBox animationVariants={boxVariants} transition={transition} />
       )}
 
       <motion.span
