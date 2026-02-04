@@ -1,5 +1,4 @@
 import { ButtonContainer, OrbitButton } from "@/components";
-import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
 interface TitleProps extends React.ComponentProps<"h1"> {
@@ -12,7 +11,7 @@ function Title({ children, className, ...props }: Readonly<TitleProps>) {
     <h1
       className={twMerge(
         "absolute -top-12 left-4 text-4xl tracking-tighter font-semibold",
-        className
+        className,
       )}
       {...props}
     >
@@ -27,9 +26,7 @@ function HomePage() {
       <ButtonContainer>
         <Title>Orbit Button</Title>
 
-        <Link href="https://x.com/im_pankajghosh" target="_blank">
-          <OrbitButton>Let's Connect on X</OrbitButton>
-        </Link>
+        <OrbitButton>Generate Magic</OrbitButton>
       </ButtonContainer>
     </section>
   );
