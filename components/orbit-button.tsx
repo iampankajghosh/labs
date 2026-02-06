@@ -62,7 +62,7 @@ function OrbitingBox({
 }) {
   return (
     <motion.span
-      className="bg-amber-300 size-10 rounded-[5px] inline-flex flex-col items-center justify-center gap-0.5 absolute left-0.5 z-10"
+      className="bg-amber-400 size-10 rounded-[5px] inline-flex flex-col items-center justify-center gap-0.5 absolute left-0.5 z-10"
       layout
       variants={animationVariants}
       transition={transition}
@@ -186,7 +186,7 @@ function OrbitButton({
   };
 
   const baseClassName =
-    "relative flex h-12 items-center justify-end cursor-pointer rounded-lg px-4 p-0.5 bg-zinc-900 border-2 border-zinc-700 transition-colors duration-200 ease-in-out hover:bg-zinc-950 focus:bg-zinc-950 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 focus:ring-offset-zinc-800";
+    "relative flex h-12 items-center justify-end cursor-pointer rounded-lg px-4 p-0.5 bg-zinc-900 border-2 border-zinc-700 ring-2 ring-transparent transition-colors duration-200 ease-in-out hover:bg-zinc-950 focus-visible:outline-none focus-visible:border-amber-400 focus-visible:ring-amber-400/50";
 
   return (
     <motion.button

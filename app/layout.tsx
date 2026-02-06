@@ -55,7 +55,7 @@ export const metadata: Metadata = {
       "Dive into Labs: A curated collection of experiments, mini-projects, and reusable components by Pankaj Ghosh. Empower your development workflow with practical, shareable code that makes building apps easier and more efficient.",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "https://res.cloudinary.com/ddws3mapm/image/upload/v1770362671/opengraph-image_gqj2xi.png",
         width: 1200,
         height: 630,
         alt: "Labs by Pankaj Ghosh - Open Graph Image",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
       "Discover innovative code experiments and reusable components at Labs. Built by @im_pankajghosh to help developers create better apps faster.",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "https://res.cloudinary.com/ddws3mapm/image/upload/v1770362671/opengraph-image_gqj2xi.png",
         alt: "Labs by Pankaj Ghosh - Twitter Card Image",
       },
     ],
